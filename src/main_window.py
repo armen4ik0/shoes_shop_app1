@@ -17,7 +17,7 @@ class MainWindow:
         self.user_data = user_data
         self.db = Database()
         self.window = tk.Tk()
-        self.window.title("ООО Обувь - Система управления товарами")
+        self.window.title("Магазин обуви - управление товарами и заказами")
         self.window.geometry("1200x700")
         Styles.configure_styles()
         self.product_edit_window = None
