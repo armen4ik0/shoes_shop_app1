@@ -1,18 +1,27 @@
+import configparser
 import os
 
 class Config:
 
     """Конфигурация приложения"""
 
-    # PostgreSQL подключение
-    DATABASE_CONFIG = {
-        'host': 'localhost',
-        'port': 5432,
-        'database': 'shoes_shop',
-        'user': 'postgres',
-        'password': '112211',
-        'client_encoding': 'UTF8'
-    }
+    @classmethod
+    def load_database_config(cls):
+        parser = configparser.ConfigParser()
+        path = os.path.join(cls.BASE_DIR, "config.ini")
+
+        if not parser.read(path, encoding="utf-8"):
+            raise FileNotFoundError("Создай config.ini на основе config.ini.example")
+
+        db = parser["database"]
+        return {
+            "host": db["localhost"],
+            "port": db.getint("5432"),
+            "database": db["shoe_shop"],
+            "user": db["postgres"],
+            "password": db["112211"],
+            "client_encoding": "UTF8",
+        }
 
     # Пути к файлам (относительно src/)
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))

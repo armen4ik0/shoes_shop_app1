@@ -11,9 +11,9 @@ class Database:
     def connect(self):
         """Подключение к БД"""
         try:
-            config = Config.DATABASE_CONFIG.copy()
-            config['client_encoding'] = 'UTF8'
-            self.conn = psycopg2.connect(**config)
+            Config.load_database_config()
+            Config['client_encoding'] = 'UTF8'
+            self.conn = psycopg2.connect(**Config)
             print("✓ Подключение к БД успешно")
             self.create_tables()
         except Exception as e:
