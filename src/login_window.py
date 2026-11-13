@@ -202,7 +202,7 @@ class LoginWindow:
         except Exception as e:
             messagebox.showerror(
                 "Ошибка подключения",
-                f"Ошибка при подключении к БД:\n{str(e)}"
+                f"Ошибка при подключении к БД.Проверьте параметры подключения в config.ini.:\n{str(e)}"
             )
 
     def _login_as_guest(self):
