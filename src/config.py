@@ -15,11 +15,11 @@ class Config:
 
         db = parser["database"]
         return {
-            "host": db["localhost"],
-            "port": db.getint("5432"),
-            "database": db["shoe_shop"],
-            "user": db["postgres"],
-            "password": db["112211"],
+            "host": db["host"],
+            "port": db.getint("port"),
+            "database": db["name"],
+            "user": db["user"],
+            "password": db["password"],
             "client_encoding": "UTF8",
         }
 
